@@ -11,8 +11,8 @@ package com.ipn.mx.Logica;
  */
 public class Camino {
    
-    Estado eactual;
-    String recorrido;
+    private Estado eactual;
+    private String recorrido;
 
     public Estado getEactual() {
         return eactual;
