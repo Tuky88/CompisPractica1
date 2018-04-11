@@ -18,13 +18,11 @@ import java.util.LinkedList;
 public class EjecutorPrincial {
 
     public static void main(String[] args) {
-        LecturaArchivo la=new LecturaArchivo("/home/axel/Documents/PracticasMicros/Practica1/src/com/ipn/mx/Archivo/2.txt");
+        //Escritorio LecturaArchivo la=new LecturaArchivo("/home/axel/Documents/PracticasMicros/Practica1/src/com/ipn/mx/Archivo/2.txt");
+        LecturaArchivo la=new LecturaArchivo("/home/axel/NetBeansProjects/CompisPractica1/src/com/ipn/mx/Archivo/1.txt");
+        
         EvaluadorAFN ea=new EvaluadorAFN(la.LeerArchivo());
-        Camino[] ft=
-                ea.ObtenerReglas();
-        for (Camino funcion : ft) {
-        ea.Evaluar("ababababab",funcion.getFt());
+        ea.Evaluar("abaaaaaaaaaaab");
         }
-    }
     
 }

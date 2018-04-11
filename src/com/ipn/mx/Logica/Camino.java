@@ -10,23 +10,34 @@ package com.ipn.mx.Logica;
  * @author axel
  */
 public class Camino {
-    private FuncionTrans[] ft;
+   
+    Estado eactual;
+    String recorrido;
 
-    public Camino(FuncionTrans[] ft) {
-        this.ft = ft;
+    public Estado getEactual() {
+        return eactual;
     }
 
-    public FuncionTrans[] getFt() {
-        return ft;
+    public void setEactual(Estado eactual) {
+        this.eactual = eactual;
     }
 
-    public void setFt(FuncionTrans[] ft) {
-        this.ft = ft;
+    public String getRecorrido() {
+        return recorrido;
+    }
+
+    public void setRecorrido(String recorrido) {
+        this.recorrido = recorrido;
     }
 
     @Override
     public String toString() {
-        return "Camino{" + "ft=" + ft + '}';
+        return "Camino{" + "eactual=" + eactual + ", recorrido=" + recorrido + '}';
+    }
+
+    public Camino(Estado eactual, String recorrido) {
+        this.eactual = eactual;
+        this.recorrido = recorrido;
     }
     
 }

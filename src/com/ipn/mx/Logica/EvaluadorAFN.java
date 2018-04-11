@@ -5,6 +5,8 @@
  */
 package com.ipn.mx.Logica;
 
+import java.util.Stack;
+
 /**
  *
  * @author axel
@@ -17,45 +19,56 @@ public class EvaluadorAFN {
         this.auto = auto;
     }
 
-    public void Evaluar(String cadenita, FuncionTrans[] ft) {
+    public void Evaluar(String cadenita) {
         String cadena = cadenita;
         int indice = cadena.length(), i = 0;
         Estado ea;
-        ea =auto.getEstadoini();
-String ruta= "ruta:"+ea.getNumEstado();
-        while (i < indice - 1) {
-            FuncionTrans[] funciones;
-            funciones = ft;
-            
-            //funciones=auto.buscarRegla(ea, cadena.substring(i,i+1));
-            //System.out.println("Caracter:" + cadena.substring(i, i + 1));
-            for (int j = 0; j < funciones.length; j++) {
-                if (funciones[j].estadoini.getNumEstado().equals(ea.getNumEstado()) && funciones[j].getTransicion().getS().equals(cadena.substring(i, i + 1))) {
-                    System.out.println(funciones[j].toString());
-                    ea = funciones[j].getEstadofin();
-                    ruta=ruta.concat(ea.getNumEstado());
+        ea = auto.getEstadoini();
+        Camino c = new Camino(ea, "");
+        Stack pila = new Stack();
+        pila.push(c);
+        System.out.println("--------------------------------------------------");
+        System.out.println("Cadena a validar:" + cadenita);
+        System.out.println("--------------------------------------------------");
+        while (!pila.isEmpty()) {
+            Camino a = (Camino) pila.pop();
+            //ystem.out.println(a.toString());
+            for (int j = 0; j < indice - 1; j++) {
+                FuncionTrans[] ft = auto.buscarRegla(a.getEactual(), String.valueOf(cadena.charAt(j)));
+                //System.out.println(ft.length + "//" + cadena.charAt(j) + "//" + a.getEactual().getNumEstado());
+                for (int k = 0; k < ft.length; k++) {
+                    if (k == 0) {
+                        a.setEactual(ft[0].getEstadofin());
+                        a.setRecorrido(a.getRecorrido() + a.getEactual().getNumEstado());
+                    } else {
+                        Camino x = new Camino(ea, a.getRecorrido());
+                        x.setEactual(ft[k].getEstadofin());
+                        x.setRecorrido(a.getRecorrido() + x.getEactual().getNumEstado());
+                        //System.out.println(x.toString());
+                        pila.push(x);
+                    }
+                    //System.out.println("Estado actual:"+a.eactual.getNumEstado());
                 }
             }
-            i++;
-        }
-        
-        System.out.println("Nodo final:" + ea.getNumEstado());
-        System.out.println("Camino:"+ruta);
-            
-        Estado[] efinales = auto.getEstadofin();
-        for (int j = 0; j < auto.getEstadofin().length; j++) {
-            if (ea.getNumEstado().equals(efinales[j].getNumEstado())) {
-                System.out.println("Cadena validada");
-            } else {
-                System.out.println("Cadena incorrecta");
-            }
+            System.out.println(a.getRecorrido());
+            System.out.println("Nodo final:" + a.eactual.getNumEstado());
+            //System.out.println("Camino:" + ruta);
+            Estado[] efinales = auto.getEstadofin();
+            for (int j = 0; j < auto.getEstadofin().length; j++) {
+                if (a.eactual.getNumEstado().equals(efinales[j].getNumEstado())
+                        && a.getRecorrido().length() == cadena.length() + 1) {
+                    System.out.println("Cadena validada");
+                } else {
+                    System.out.println("Cadena incorrecta");
+                }
 
+            }
+            System.out.println("--------------------------------------------------");
         }
     }
 
     public Camino[] ObtenerReglas() {
-       Camino[] ft = null;
-       
+        Camino[] ft = null;
 
         return ft;
     }
