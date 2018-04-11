@@ -33,7 +33,7 @@ public class EvaluadorAFN {
         while (!pila.isEmpty()) {
             Camino a = (Camino) pila.pop();
             //ystem.out.println(a.toString());
-            for (int j = 0; j < indice; j++) {
+            for (int j = 0; j < indice-1; j++) {
                 FuncionTrans[] ft = auto.buscarRegla(a.getEactual(), String.valueOf(cadena.charAt(j)));
                 //System.out.println(ft.length + "//" + cadena.charAt(j) + "//" + a.getEactual().getNumEstado());
                 for (int k = 0; k < ft.length; k++) {
@@ -45,7 +45,7 @@ public class EvaluadorAFN {
                         x.setEactual(ft[k].getEstadofin());
                         x.setRecorrido(a.getRecorrido() + x.getEactual().getNumEstado());
                         //System.out.println(x.toString());
-
+                        pila.push(x);
                     }
                     //System.out.println("Estado actual:"+a.eactual.getNumEstado());
                 }
@@ -68,11 +68,5 @@ public class EvaluadorAFN {
             }
             System.out.println("--------------------------------------------------");
         }
-    }
-
-    public Camino[] ObtenerReglas() {
-        Camino[] ft = null;
-
-        return ft;
     }
 }
