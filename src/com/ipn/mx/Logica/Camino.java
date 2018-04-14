@@ -13,6 +13,15 @@ public class Camino {
    
     private Estado eactual;
     private String recorrido;
+    private int consumido;
+
+    public int getConsumido() {
+        return consumido;
+    }
+
+    public void setConsumido(int consumido) {
+        this.consumido = consumido;
+    }
 
     public Estado getEactual() {
         return eactual;
@@ -32,8 +41,10 @@ public class Camino {
 
     @Override
     public String toString() {
-        return "Camino{" + "eactual=" + eactual + ", recorrido=" + recorrido + '}';
+        return "Camino{" + "eactual=" + eactual + ", recorrido=" + recorrido + ", consumido=" + consumido + '}';
     }
+
+    
 
     public Camino(Estado eactual, String recorrido) {
         this.eactual = eactual;

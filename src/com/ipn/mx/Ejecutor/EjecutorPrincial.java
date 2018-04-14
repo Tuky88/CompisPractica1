@@ -5,11 +5,8 @@
  */
 package com.ipn.mx.Ejecutor;
 
-import com.ipn.mx.Logica.Camino;
 import com.ipn.mx.Logica.EvaluadorAFN;
-import com.ipn.mx.Logica.FuncionTrans;
 import com.ipn.mx.Util.LecturaArchivo;
-import java.util.LinkedList;
 
 /**
  *
@@ -19,10 +16,10 @@ public class EjecutorPrincial {
 
     public static void main(String[] args) {
         //Escritorio LecturaArchivo la=new LecturaArchivo("/home/axel/Documents/PracticasMicros/Practica1/src/com/ipn/mx/Archivo/2.txt");
-        LecturaArchivo la=new LecturaArchivo("/home/axel/NetBeansProjects/CompisPractica1/src/com/ipn/mx/Archivo/1.txt");
+        LecturaArchivo la=new LecturaArchivo("/home/axel/NetBeansProjects/CompisPractica1/src/com/ipn/mx/Archivo/2.txt");
         
         EvaluadorAFN ea=new EvaluadorAFN(la.LeerArchivo());
-        ea.Evaluar("ababab");
+        ea.Evaluar("abab");
         }
     
 }
