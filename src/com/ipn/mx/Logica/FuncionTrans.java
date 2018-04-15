@@ -10,9 +10,9 @@ package com.ipn.mx.Logica;
  * @author axel
  */
 public class FuncionTrans {
-    public Estado estadoini;
-    public Simbolo transicion;
-    public Estado estadofin;
+    private Estado estadoini;
+    private Simbolo transicion;
+    private Estado estadofin;
 
     public FuncionTrans(Estado estadoini, Simbolo transicion, Estado estadofin) {
         this.estadoini = estadoini;
