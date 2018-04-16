@@ -35,30 +35,34 @@ public class EvaluadorAFN {
             String recorrido=a.getRecorrido();
             //ystem.out.println(a.toString());
             for (int j = 0 +recorrido.length()-1; j < indice; j++) {
-                System.out.println("Caracter:" + String.valueOf(cadena.charAt(j)));
-                System.out.println("Recorrido:"+a.getRecorrido());
+                //System.out.println("distancia reco"+j);
+                //System.out.println("Caracter:" + String.valueOf(cadena.charAt(j)));
+                //System.out.println("Recorrido:"+a.getRecorrido());
+                //System.out.println(a.getEactual()+ String.valueOf(cadena.charAt(j)));
                 FuncionTrans[] ft = auto.buscarRegla(a.getEactual(), String.valueOf(cadena.charAt(j)));
                 //System.out.println(ft.length + "//" + cadena.charAt(j) + "//" + a.getEactual().getNumEstado());
                 for (int k = 0; k < ft.length; k++) {
-                    if(ft.length>1)
+                    /*if(ft.length>0)
                     {
+                        System.out.println("Reglas:");
                         for (int l = 0; l < ft.length; l++) {
                             System.out.println(ft[l].toString());
                         }
-                    }
-                    System.out.println(ft[k].toString());
+                    }*/
                     if (k == 0) {
                         a.setEactual(ft[0].getEstadofin());
                         a.setRecorrido(a.getRecorrido() + a.getEactual().getNumEstado());
-                        recorrido+=recorrido+a.getEactual().getNumEstado();
                         //System.out.println("rnrnenkre");
                     } else {
-                        System.out.println(a.toString());
-                        recorrido+=ft[k].getEstadofin().getNumEstado();
+                        //System.out.println(a.toString());
+                        recorrido=a.getRecorrido().substring(0,a.getRecorrido().length()-1) + ft[k].getEstadofin().getNumEstado();
+                        //System.out.println(":"+a.getRecorrido().substring(0,a.getRecorrido().length()-1) + ft[k].getEstadofin().getNumEstado() );        
+                        //System.out.println(recorrido);
                         Camino x = new Camino(ft[k].getEstadofin(),recorrido);
+                        //System.out.println("Recorrido a ver que pedu"+recorrido);
                         x.setConsumido(recorrido.length());
                         //System.out.println(x.toString());
-                        System.out.println(x.toString());
+                       // System.out.println(x.toString());
                         pila.push(x);
                     }
                     //System.out.println("Estado actual:"+a.eactual.getNumEstado());

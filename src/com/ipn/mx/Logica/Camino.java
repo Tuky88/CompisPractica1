@@ -49,6 +49,7 @@ public class Camino {
     public Camino(Estado eactual, String recorrido) {
         this.eactual = eactual;
         this.recorrido = recorrido;
+        System.out.println(this.toString());
     }
     
 }

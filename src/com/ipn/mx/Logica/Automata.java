@@ -77,7 +77,7 @@ public class Automata {
         FuncionTrans[] ftv ;
         LinkedList ls=new LinkedList();
 
-        for (int i = 0; i <(trans.length)-1; i++) {
+        for (int i = 0; i <(trans.length); i++) {
             //System.out.println("BUSQUEDA: "+i);
             //System.out.println("ESTADO:"+ei.getNumEstado() +"==" +trans[i].getEstadoini().getNumEstado());
             //System.out.println("TRANSICION:"+tran +" ==" +trans[i].getTransicion().getS());
